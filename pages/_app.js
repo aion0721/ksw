@@ -7,6 +7,7 @@ import ToolBar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Container } from "@material-ui/core";
 
 import { Provider } from "react-redux";
 import { useStore } from "../store";
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const classes = useStyles();
+
   return (
     <Provider store={store}>
       <div className={classes.root}>
@@ -51,7 +53,9 @@ function MyApp({ Component, pageProps }) {
         <Link href="/guest/input">
           <a>Goto input info</a>
         </Link>
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </div>
     </Provider>
   );

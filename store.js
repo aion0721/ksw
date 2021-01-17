@@ -8,6 +8,7 @@ const initialState = {
   lastUpdate: 0,
   light: false,
   count: 0,
+  firstName: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +33,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         count: initialState.count,
+      };
+    case "SETFIRSTNAME":
+      return {
+        ...state,
       };
 
     default:

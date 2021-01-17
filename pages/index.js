@@ -34,6 +34,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <h1>Count: {count} </h1>
 
       <button onClick={increment}>+1</button>
