@@ -12,6 +12,10 @@ import { Container } from "@material-ui/core";
 import { Provider } from "react-redux";
 import { useStore } from "../store";
 
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({});
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  paper: {
+    paddding: theme.spacing(2),
+    color: theme.palette.text.primary,
   },
 }));
 
