@@ -34,7 +34,13 @@ function Top() {
   function confirmValue() {}
 
   function getAddress() {
+    const pattern = /^\d{7}$/g;
     const zipNumTmp = getValues("zipNum");
+
+    if (!zipNumTmp.match(pattern)) {
+      alert("7桁で郵便番号を入力してください。");
+      return false;
+    }
     console.log(getValues("zipNum"));
     axios
       .get(
@@ -118,7 +124,9 @@ function Top() {
           </Paper>
           <Paper>
             <TextField
-              inputRef={register}
+              inputRef={register({
+                required: "error",
+              })}
               label="郵便番号"
               name="zipNum"
             ></TextField>
