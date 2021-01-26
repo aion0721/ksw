@@ -230,6 +230,7 @@ function Top() {
           {watchAllFields.lastNameEn}
           {watchAllFields.firstNameEn}
           {watchAllFields.gender}
+          {watchAllFields.whichguest}
           {watchAllFields.address1}
           {watchAllFields.address2}
           {watchAllFields.phoneNumber}

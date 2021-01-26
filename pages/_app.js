@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className="classes.title">
-              News
+              Wedding
             </Typography>
           </ToolBar>
         </AppBar>
