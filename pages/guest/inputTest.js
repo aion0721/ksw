@@ -12,6 +12,12 @@ import {
   TextField,
   Card,
   Box,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
 } from "@material-ui/core";
 import axios from "axios";
 
@@ -34,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
   card: {
     padding: theme.spacing(2),
     textAlign: "center",
+  },
+  table: {
+    border: 1,
   },
 }));
 function Top() {
@@ -223,18 +232,62 @@ function Top() {
       <div style={{ display: confirmFlag ? "block" : "none" }}>
         <form>
           <h1>Confirm</h1>
-          {watchAllFields.lastNameJap}
-          {watchAllFields.firstNameJap}
-          {watchAllFields.lastNameJapRuby}
-          {watchAllFields.firstNameJapRuby}
-          {watchAllFields.lastNameEn}
-          {watchAllFields.firstNameEn}
-          {watchAllFields.gender}
-          {watchAllFields.whichguest}
-          {watchAllFields.address1}
-          {watchAllFields.address2}
-          {watchAllFields.phoneNumber}
-          {watchAllFields.mailaddress}
+          <TableContainer component={Paper}>
+            <Table className={classes.table} size="small" arial-label="confirm">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Item</TableCell>
+                  <TableCell>Value</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>NameJap</TableCell>
+                  <TableCell>
+                    {watchAllFields.lastNameJap}
+                    {watchAllFields.firstNameJap}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>NameJapRuby</TableCell>
+                  <TableCell>
+                    {watchAllFields.lastNameJapRuby}
+                    {watchAllFields.firstNameJapRuby}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>NameEn</TableCell>
+                  <TableCell>
+                    {watchAllFields.lastNameEn}
+                    {watchAllFields.firstNameEn}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>gender</TableCell>
+                  <TableCell>{watchAllFields.gender}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>whichguest</TableCell>
+                  <TableCell>{watchAllFields.whichguest}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>address</TableCell>
+                  <TableCell>
+                    {watchAllFields.address1}
+                    {watchAllFields.address2}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>phone</TableCell>
+                  <TableCell>{watchAllFields.phoneNumber}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>mail</TableCell>
+                  <TableCell>{watchAllFields.mailaddress}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
           <Button type="submit" variant="contained" color="primary">
             Submit!
           </Button>
