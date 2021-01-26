@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     padding: theme.spacing(2),
+    textAlign: "center",
   },
 }));
 function Top() {
@@ -53,8 +54,6 @@ function Top() {
   function showValue() {
     setConfirmFlag(!confirmFlag);
   }
-
-  function confirmValue() {}
 
   function getAddress() {
     const pattern = /^\d{7}$/g;
@@ -96,25 +95,18 @@ function Top() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Card className={classes.card}>
-                <Grid item sm={4}>
-                  AAA
-                </Grid>
-                <Grid item sm={6}>
-                  <TextField
-                    inputRef={register}
-                    label="姓"
-                    name="lastNameJap"
-                  ></TextField>
-                  <TextField
-                    inputRef={register}
-                    label="名"
-                    name="firstNameJap"
-                  ></TextField>
-                </Grid>
+                <TextField
+                  inputRef={register}
+                  label="姓"
+                  name="lastNameJap"
+                ></TextField>
+                <TextField
+                  inputRef={register}
+                  label="名"
+                  name="firstNameJap"
+                ></TextField>
               </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>
+              <Card className={classes.card}>
                 <TextField
                   inputRef={register}
                   label="姓(かな)"
@@ -125,10 +117,8 @@ function Top() {
                   label="名(かな)"
                   name="firstNameJapRuby"
                 ></TextField>
-              </Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>
+              </Card>
+              <Card className={classes.card}>
                 <TextField
                   inputRef={register}
                   label="姓(ローマ字)"
@@ -139,11 +129,25 @@ function Top() {
                   label="名(ローマ字)"
                   name="firstNameEng"
                 ></TextField>
-              </Paper>
-            </Grid>
-
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>
+              </Card>
+              <Card className={classes.card}>
+                <FormControl component="fieldset">
+                  <FormLabel component="whichguest">性別</FormLabel>
+                  <RadioGroup aria-label="whichguest" name="whichguest">
+                    <FormControlLabel
+                      value="koba"
+                      control={<Radio inputRef={register} />}
+                      label="新郎"
+                    />
+                    <FormControlLabel
+                      value="sato "
+                      control={<Radio inputRef={register} />}
+                      label="新婦"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Card>
+              <Card className={classes.card}>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">性別</FormLabel>
                   <RadioGroup aria-label="gender" name="gender">
@@ -159,57 +163,60 @@ function Top() {
                     />
                   </RadioGroup>
                 </FormControl>
-              </Paper>
-            </Grid>
-
-            <Paper>
-              <TextField
-                inputRef={register({
-                  required: "error",
-                })}
-                label="郵便番号"
-                name="zipNum"
-              ></TextField>
+              </Card>
+              <Card className={classes.card}>
+                <TextField
+                  inputRef={register({
+                    required: "error",
+                  })}
+                  label="郵便番号"
+                  name="zipNum"
+                ></TextField>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => getAddress()}
+                >
+                  GETADDRESS
+                </Button>
+                <Controller
+                  name="address1"
+                  control={control}
+                  defaultValue=""
+                  render={({ onChange, value }) => (
+                    <TextField
+                      label="住所1"
+                      onChange={onChange}
+                      value={value}
+                    />
+                  )}
+                />
+                <TextField
+                  inputRef={register}
+                  label="住所2"
+                  name="address2"
+                ></TextField>
+              </Card>
+              <Card className={classes.card}>
+                <TextField
+                  inputRef={register}
+                  label="電話番号"
+                  name="phoneNumber"
+                ></TextField>
+                <TextField
+                  inputRef={register}
+                  label="メールアドレス"
+                  name="mailaddress"
+                ></TextField>
+              </Card>
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => getAddress()}
+                onClick={() => showValue()}
               >
-                GETADDRESS
+                確認画面へ
               </Button>
-              <Controller
-                name="address1"
-                control={control}
-                defaultValue=""
-                render={({ onChange, value }) => (
-                  <TextField label="住所1" onChange={onChange} value={value} />
-                )}
-              />
-              <TextField
-                inputRef={register}
-                label="住所2"
-                name="address2"
-              ></TextField>
-            </Paper>
-            <Paper>
-              <TextField
-                inputRef={register}
-                label="電話番号"
-                name="phoneNumber"
-              ></TextField>
-              <TextField
-                inputRef={register}
-                label="メールアドレス"
-                name="mailaddress"
-              ></TextField>
-            </Paper>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => showValue()}
-            >
-              確認画面へ
-            </Button>
+            </Grid>
           </Grid>
         </form>
       </div>
